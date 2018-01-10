@@ -34,13 +34,14 @@
     var cssResources = '@import url("https://unpkg.com/bootstrap@4.0.0-beta.3/dist/css/bootstrap.min.css");'
     + '\n@import url("https://unpkg.com/bootstrap-vue@1.4.0/dist/bootstrap-vue.css");' 
     + '\n@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");' 
+
     var bootCode = 
         `var globalVariable = "leon"
         Vue.use(InputModal)\n`
     var globalVariable = "Luciano"
 
     window.$docsify = {
-      name: 'docsify-demo-box-vue',
+      loadSidebar: true,
       repo: 'https://github.com/njleonzhang/docsify-demo-box-vue',
       plugins: [
         DemoBoxVue.create(jsResources, cssResources, bootCode)
