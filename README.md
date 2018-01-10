@@ -2,8 +2,10 @@
 
 A Vue component that displays a modal for input data
 
-## Installation
+**This component uses another component called 'formGroupInput.vue'. I have taken it from [this admin template](https://github.com/cristijora/vue-paper-dashboard)**
 
+## Installation
+You will have to install **bootstrap** (*beta4.0.0-beta.3* version) and **bootstrap-vue** in order to make this component work:
 ```js
 npm i --save-dev bootstrap-vue bootstrap@beta4.0.0-beta.3 bootstrap-vue-input-modal
 ```
@@ -23,7 +25,16 @@ Include the script file, then install the component with `Vue.use(InputModal);` 
 ### Module
 
 ```js
-import InputModal from 'bootstrap-vue-input-modal';
+//main.js
+//Bootstrap's styles and components imports
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue);
+```
+```js
+//Component where do you want to use the modal
+import InputModal from 'bootstrap-vue-input-modal'
 ```
 
 ## Usage
