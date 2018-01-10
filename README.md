@@ -24,6 +24,17 @@ Include the script file, then install the component with `Vue.use(InputModal);` 
 Vue.use(InputModal);
 </script> 
 ```
+Or you can use it via unpkg.com (without installing the modules with "npm i"):
+```html
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0-beta.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-vue@1.4.0/dist/bootstrap-vue.css">
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/bootstrap-vue@1.4.0/dist/bootstrap-vue.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/bootstrap-vue-input-modal@1.1.2-0/dist/b-input-modal.min.js"></script>
+<script type="text/javascript">
+Vue.use(InputModal);
+</script> 
+```
 
 ### Module
 
