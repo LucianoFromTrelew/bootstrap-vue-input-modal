@@ -15,11 +15,14 @@ npm i --save-dev bootstrap-vue bootstrap@beta4.0.0-beta.3 bootstrap-vue-input-mo
 Include the script file, then install the component with `Vue.use(InputModal);` e.g.:
 
 ```html
-<script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="node_modules/bootstrap-vue/dist/bootstrap-vue.css">
+<script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap-vue/dist/bootstrap-vue.min.js"></script>
 <script type="text/javascript" src="node_modules/bootstrap-vue-input-modal/dist/b-input-modal.min.js"></script>
 <script type="text/javascript">
-  Vue.use(InputModal);
-</script>
+Vue.use(InputModal);
+</script> 
 ```
 
 ### Module
