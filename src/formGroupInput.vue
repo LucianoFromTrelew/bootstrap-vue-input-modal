@@ -24,7 +24,7 @@
   export default {
     inheritAttrs: false,
     props: {
-      value: [String, Number],
+      value: [String, Number, Boolean],
       label: String
     },
     methods: {
