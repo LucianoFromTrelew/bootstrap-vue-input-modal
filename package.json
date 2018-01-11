@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-vue-input-modal",
-  "version": "1.2.3",
+  "version": "1.2.4-0",
   "description": "A boostrap-vue modal for input data and validate it",
   "main": "dist/b-input-modal.js",
   "scripts": {
