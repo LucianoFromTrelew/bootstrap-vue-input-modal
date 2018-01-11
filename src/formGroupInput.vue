@@ -3,19 +3,12 @@
     <label v-if="label">
       {{label}}
     </label>
-    <b-form-input v-if="$attrs['type'] !== 'bool'" 
-        class="form-control border-input"
-        v-bind="$attrs"
-        aria-describedby="inputLiveFeedback"
-        :value="value"
-        @input="handleInput">
+    <b-form-input class="form-control border-input"
+           v-bind="$attrs"
+           aria-describedby="inputLiveFeedback"
+           :value="value"
+           @input="handleInput">
     </b-form-input>
-    <b-form-checkbox v-else="$attrs['type'] !== 'bool'"
-        class="form-control border-input"
-        v-bind="$attrs"
-        :value="value"
-        @input="handleInput">
-    </b-form-checkbox>
     <b-form-invalid-feedback id="inputLiveFeedback" v-text="$attrs['errorMessage'] ? $attrs['errorMessage'] : 'This field is invalid'"></b-form-invalid-feedback>
   </div>
 </template>
@@ -23,7 +16,7 @@
   export default {
     inheritAttrs: false,
     props: {
-      value: [String, Number, Boolean],
+      value: [String, Number],
       label: String
     },
     methods: {
