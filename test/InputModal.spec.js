@@ -39,7 +39,6 @@ describe('InputModal.vue', () => {
             type: 'text',
             propName: 'name',
             validator: (obj, field) => {
-              //console.log("outside validatorrrr")
               return obj.name.length > 20
             },
             default: 'Juancho Pancho'
@@ -49,8 +48,13 @@ describe('InputModal.vue', () => {
     })
     expect(wrapper.props().fields).toHaveLength(1)
     expect(wrapper.findAll(fgInput)).toHaveLength(1)
+    expect(wrapper.find(fgInput).isVueInstance()).toBeTruthy()
     expect(wrapper.vm.isReady).toBeTruthy()
     expect(wrapper.contains('b-container')).toBeTruthy()
+    expect(wrapper.contains('b-form-input')).toBeTruthy()
+    expect(wrapper.findAll('b-form-input')).toHaveLength(1)
+    expect(wrapper.findAll('b-form-input')).not.toHaveLength(0)
+    expect(wrapper.findAll('b-form-input')).not.toHaveLength(2)
   })
   it('emiting input', () => {
     const wrapper = mount(InputModal, {
@@ -109,6 +113,48 @@ describe('InputModal.vue', () => {
     expect(wrapper.emitted('input')).toBeTruthy()
     expect(wrapper.emitted('input')[0]).toEqual([{name: 'Luciano Serruya Aloisi'}])
     expect(wrapper.emitted('input')[0]).not.toEqual([{name: 'Juancho'}])
+  })
+  it('Testing bool', () => {
+    const wrapper = mount(InputModal, {
+      propsData: {
+        fields: [
+          {
+            type: 'bool',
+            propName: 'isActive'
+          }
+        ]
+      }
+    }) 
+    expect(wrapper.findAll("b-form-input")).toHaveLength(0)
+    expect(wrapper.findAll("b-form-checkbox")).toHaveLength(1)
+    //const btn = wrapper.find('b-btn')
+    //btn.trigger('click')
+    //expect(wrapper.emitted('input')).toBeTruthy()
+    //expect(wrapper.emitted('input')[0]).toEqual([{name: 'Luciano Serruya Aloisi'}])
+    //expect(wrapper.emitted('input')[0]).not.toEqual([{name: 'Juancho'}])
+  })
+  it('Checking the checkbox', () => {
+    const wrapper = mount(InputModal, {
+      propsData: {
+        fields: [
+          {
+            type: 'bool',
+            propName: 'isActive'
+          }
+        ]
+      }
+    }) 
+    const cb = wrapper.find("b-form-checkbox")
+    expect(cb.is("b-form-checkbox")).toBeTruthy()
+    //expect(cb.props().value).toBeTruthy()
+
+    //cb.setProps({value: true})
+
+    //const btn = wrapper.find('b-btn')
+    //btn.trigger('click')
+    //expect(wrapper.emitted('input')).toBeTruthy()
+    //expect(wrapper.emitted('input')[0]).toEqual([{isActive: true}])
+    //expect(wrapper.emitted('input')[0]).not.toEqual([{name: 'Juancho'}])
   })
   //it('Setting props', () => {
     //const wrapper = mount(InputModal, {

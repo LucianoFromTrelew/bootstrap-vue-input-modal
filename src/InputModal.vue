@@ -3,12 +3,13 @@
         <b-container v-if="isReady" fluid>
             <b-row v-for="(field, index) in fields" :key="index">
                 <b-col>
-                    <fg-input
+                    <fg-input v-if="field.type !== 'bool'"
                         ref="fieldModalRef"
                         :state="field.validator ? field.validator(obj, field) : CONFIG[field.type].validator(obj, field)"
                         v-model="obj[field.propName]"
                         v-bind="field">
                     </fg-input>
+                    <b-form-checkbox v-else v-model="obj[field.propName]" v-bind="field"></b-form-checkbox>
                 </b-col>
             </b-row>
             <b-btn v-if="isEditing" class="btn btn-fill" variant="danger" @click="handleDelete">
@@ -52,6 +53,9 @@ const CONFIG = {
       return obj[field.propName] && re.test(obj[field.propName].toLowerCase())
     }
   },
+  "bool": {
+    default: false,
+  },
 }
 export default {
 
@@ -89,14 +93,18 @@ export default {
         this.isReady = true
       },
       handleOk(event){
-          let fieldStates = this.$refs.fieldModalRef.map(f => f.isValid())
-          let state = fieldStates.reduce((prev, actual, index, arr) => prev && actual
-              , true)
+          if(this.$refs.fieldModalRef){
 
-          if(state === false){
-              return
+            let fieldStates = this.$refs.fieldModalRef.map(f => f.isValid())
+            let state = fieldStates.reduce((prev, actual, index, arr) => prev && actual
+                , true)
+
+            if(state === false){
+                return
+            }
           }
 
+          console.log("BEFORE EMITTIN") 
           this.$emit(this.isEditing ? "edit": "input", this.obj)
           /*this.$refs[this.modalRef].hide()*/
       },
